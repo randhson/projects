@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  dt_inicio: 2020-10-27 22:38:26
+  dt_final: 2020-10-27 22:38:26
+  finish: false
+  project: 
+
+two:
+  title: MyString
+  dt_inicio: 2020-10-27 22:38:26
+  dt_final: 2020-10-27 22:38:26
+  finish: false
+  project: 

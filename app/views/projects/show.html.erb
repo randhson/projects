@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Dt inicio:</strong>
+  <%= @project.dt_inicio %>
+</p>
+
+<p>
+  <strong>Dt final:</strong>
+  <%= @project.dt_final %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @project.complet %> %
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+<h2>Atividades</h2>
+<%= link_to 'Nova tarefa', new_task_path %>
+
+<% @project.present?%>
+  <% @project.tasks.each do |task| %>
+    <h4>
+      <%= task.title%>
+    </h4>
+    
+    <p>
+      <strong>Finish?</strong>
+      <%= task.finish%>
+    </p>
+  
+
+    <%= link_to 'Edit', edit_task_path(task) %> |
+    <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+  <% end %>
