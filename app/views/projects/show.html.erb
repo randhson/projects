@@ -1,44 +1,67 @@
-<p id="notice"><%= notice %></p>
+<section id="show-project">
+  <div class="project">
+    <span class="title-home">eprojects</span>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+    <table class="list-projects col-sm-11">
+      <thead>
+        <tr class="col-sm-12">
+          <th>Nome do Projeto</th>
+          <th>Data Inicio</th>
+          <th>Data Final</th>
+          <th>% Completo</th>
+          <th>Atrasado?</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
 
-<p>
-  <strong>Dt inicio:</strong>
-  <%= @project.dt_inicio %>
-</p>
+      <tbody>
+        <% if @project.present? %>
+          <tr>
+            <td><%= @project.title %></td>
+            <td><%= @project.dt_inicio.strftime("%d/%m/%Y") %></td>
+            <td><%= @project.dt_final.strftime("%d/%m/%Y") %></td>
+            <td><%= @project.complet %></td>
+            <td><%= @project.status %></td>
+            <td><%= link_to 'Edit', edit_project_path(@project), class: 'btn' %></td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Back', projects_path, class: 'btn' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<p>
-  <strong>Dt final:</strong>
-  <%= @project.dt_final %>
-</p>
+    <div class="task-project">
+      <span class="title-home">Atividades</span>
 
-<p>
-  <strong>Completed:</strong>
-  <%= @project.complet %> %
-</p>
+      <%= link_to 'Nova tarefa', new_task_path, class: 'btn' %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+      <% @project.tasks%>
+        <table class="list-projects col-sm-9">
+          <thead>
+            <tr class="col-sm-12">
+              <th>Nome da Atividade</th>
+              <th>Data Inicio</th>
+              <th>Data Fim</th>
+              <th>Finalizada?</th>
+              <th class="action" colspan="2">Ações</th>
+            </tr>
+          </thead>
 
-<h2>Atividades</h2>
-<%= link_to 'Nova tarefa', new_task_path %>
+          <tbody>
+            <% @project.tasks.each do |task| %>
+              <tr>
+                <td><%= task.title%></td>
+                <td><%= task.dt_inicio.strftime("%d/%m/%Y") %></td>
+                <td><%= task.dt_final.strftime("%d/%m/%Y") %></td>
+                <td><%= task.finish%></td>
+                <td><%= link_to 'Edit', edit_task_path(task), class: 'btn' %></td>
+                <td><%= link_to 'Destroy', task, class: 'btn', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-<% @project.present?%>
-  <% @project.tasks.each do |task| %>
-    <h4>
-      <%= task.title%>
-    </h4>
-    
-    <p>
-      <strong>Finish?</strong>
-      <%= task.finish%>
-    </p>
-  
-
-    <%= link_to 'Edit', edit_task_path(task) %> |
-    <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-  <% end %>
+    </div>
+  </div>
+</section>

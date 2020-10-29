@@ -1,5 +1,12 @@
 class Project < ApplicationRecord
     has_many :tasks
+    
+    stringify :dt_inicio, format: "%d/%m/%Y"
+    stringify :dt_final, format: "%d/%m/%Y"
+
+    validates :title, presence: true
+    validates :dt_inicio, presence: true
+    validates :dt_final, presence: true
 
     def complet
         qtde_tasks = self.tasks
@@ -15,4 +22,20 @@ class Project < ApplicationRecord
             return 0
         end
     end
+
+    def status
+        today = Date.today
+        dt_final = self.dt_final
+        comp = complet
+        if dt_final < today
+            if comp < 100
+                return 'Sim'
+            else
+                return 'Não'
+            end
+        else
+            return 'Não'
+        end
+    end
+    
 end
