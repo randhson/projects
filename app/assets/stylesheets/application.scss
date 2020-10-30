@@ -35,6 +35,29 @@ input[type="date"]{
     text-align: center;
 }
 
+select {
+    background-color: transparent;
+    border-radius: 0.50rem;
+    border-color: #0f0f0f;
+    border-bottom-width: thick;
+    width: 18vw;
+    color: #fff;
+    font-weight: 500;
+}
+
+.box-01 {
+    padding: 0;
+    display: flex;
+    left: 16%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.box-01 div {
+    padding: 0;
+}
+
+
 #home {
     position: relative;
 }
@@ -46,10 +69,15 @@ input[type="date"]{
 
 .center-conteudo {
     position: absolute;
-    top: 10%;
-    width: 58%;
+    top: 15%;
+    width: 65%;
     left: 20%;
     height: 70%;
+}
+
+.text-content {
+    width: 69%;
+    margin-top: 5%;
 }
 
 .title-home {
@@ -64,8 +92,32 @@ input[type="date"]{
     text-transform: lowercase;
 }
 
-.btn-home {
+.logo {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: -9%;
+    align-items: center;
+    top: -7%;
+}
 
+.logo img {
+    width: 33vw;
+    margin-bottom: 7%;
+}
+
+.btn-home {
+    width: 4vw;
+    height: 8vh;
+    border-radius: 2rem !important;
+}
+
+.btn-link {
+    color: #000;
+}
+
+.btn-link:hover {
+    color: #fff;
 }
 
 #projects, #show-project, #task_new, #project-edit {
@@ -92,12 +144,21 @@ input[type="date"]{
     top: 10vh;
 }
 
+.project-edit a {
+    margin-right: -27%;
+    margin-top: -13%;
+}
+
 .list-projects {
     margin-top: 3%;
 }
 
 .action {
     padding-left: 6%;
+}
+
+.actions {
+    padding-right: 9%;
 }
 
 .tasks {
